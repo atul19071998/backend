@@ -14,12 +14,7 @@ const { MongoClient } = require("mongodb");
 const EmptyCart = require("../model/EmptyCardSchema");
 
 router.use(cookieParser());
-router.use(
-  cors({
-    origin: ["http://localhost:3000"],
-    credentials: true,
-  })
-);
+router.use(cors());
 
 router.get("/", Authenticate, (req, res) => {
   res.status(200).json({ success: true, message: "user Authenticate" });
