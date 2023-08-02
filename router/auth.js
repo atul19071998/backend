@@ -19,7 +19,9 @@ router.use(cors());
 router.get("/", Authenticate, (req, res) => {
   res.status(200).json({ success: true, message: "user Authenticate" });
 });
-
+router.get("/swapnil", (req, res) => {
+  res.status(201).json({ success: true, message: "swapnil true" });
+});
 async function FindData() {
   const uri =
     "mongodb+srv://atulnew:topology@cluster0.yylrcsq.mongodb.net/?retryWrites=true&w=majority";
