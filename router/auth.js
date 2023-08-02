@@ -12,15 +12,14 @@ const Razorpay = require("razorpay");
 const shortid = require("shortid");
 const { MongoClient } = require("mongodb");
 const EmptyCart = require("../model/EmptyCardSchema");
-router.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.header('Access-Control-Allow-Credentials', true);
-  next();
-});
+ const corsOptions = {
+  origin: '*',
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+router.use(cors(corsOptions));
 router.use(cookieParser());
-router.use(cors());
+ 
 
 
 router.get("/", Authenticate, (req, res) => {
